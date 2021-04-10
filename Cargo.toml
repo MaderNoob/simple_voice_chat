@@ -1,0 +1,13 @@
+[package]
+name = "simple"
+version = "0.1.0"
+authors = ["Mader Noob <madernoob@protonmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+p256 = {version = "0.7.2", features = ["ecdh"]}
+rand_core = {version = "0.5.1", features = ["getrandom"]}
+chacha20 = "0.6.0"
+sha3 = "0.9.1"

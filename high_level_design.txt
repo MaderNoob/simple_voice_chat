@@ -1,0 +1,16 @@
+Simple Voice Chat
+
+This is a simple voice chat app that acts somewhat like actual phone calls - one can call, one can accept a call, and one can talk to another while in a call.
+
+modules:
+	Client:
+		The client is responsible for all network communications
+		The client uses 2 udp sockets:
+			1. responsible for receiving and sending connection requests, and when connected responsible for sending or receiving audio, depending on whether you 
+		       are the requester or the listener of the voice chat conversationl
+			2. responsible for receiving or sending audio depending on depending on whether you are the requester or the listener of the voice chat conversationl
+		When not connected, the client has 2 modes of operation:
+			- waiting: in this mode the client receives any incoming voice chat requests, and calls a callback which returns a boolean indicating whether or not the request was accepted
+			- connecting: in this mode the client tries to connect to a requested endpoint
+		When accepting a connection request the client starts the handshake which should use ECDH to achieve a shared secret and then use that to derive 
+		2 different ChaCha20 streams, each with a different nonce, one for encypting the sent data and one for decrypting the received data.
